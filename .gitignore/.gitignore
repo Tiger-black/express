@@ -5,3 +5,5 @@ npm-debug.log
 build.json
 build/
 src/**/**/*.css
+/**/node_modules/
+/**/**/node_modules/
