@@ -9,7 +9,11 @@
     entry point: (index.js)
     4、接下来安装 Express 并将其保存到依赖列表中：如果只是临时安装 Express，不想将它添加到依赖列表中，只需略去 --save 参数即可
     $ npm install express --save
-
+   
+   # 也可以通过应用生成器工具 express-generator 可以快速创建一个应用的骨架。
+   express-generator 包含了 express 命令行工具。通过如下命令即可安装：
+   $ npm install express-generator -g
+   
 二、Hello world 实例
     注意：这里所创建是一个最最简单的 Express 应用，并且仅仅只有一个文件 — 和通过 Express 应用生成器 所创建的应用_完全不一样_，Express 应用生成器所创建的应用框架包含多个 JavaScript 文件、Jade 模板和针对不同用途的子目录。
     进入 myapp 目录，创建一个名为 app.js 的文件，然后将下列代码复制进去：
