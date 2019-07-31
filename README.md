@@ -9,27 +9,6 @@
     entry point: (index.js)
     4、接下来安装 Express 并将其保存到依赖列表中：如果只是临时安装 Express，不想将它添加到依赖列表中，只需略去 --save 参数即可
     $ npm install express --save
-   
-   也可以通过应用生成器工具 express-generator 可以快速创建一个应用的骨架。
-   express-generator 包含了 express 命令行工具。通过如下命令即可安装：
-   $ npm install express-generator -g
-   -h 参数可以列出所有可用的命令行参数：
-   $ express -h
-   Usage: express [options] [dir]
-
-   Options:
-
-    -h, --help          输出使用方法
-        --version       输出版本号
-    -e, --ejs           添加对 ejs 模板引擎的支持
-        --hbs           添加对 handlebars 模板引擎的支持
-        --pug           添加对 pug 模板引擎的支持
-    -H, --hogan         添加对 hogan.js 模板引擎的支持
-        --no-view       创建不带视图引擎的项目
-    -v, --view <engine> 添加对视图引擎（view） <engine> 的支持 (ejs|hbs|hjs|jade|pug|twig|vash) （默认是 jade 模板引擎）
-    -c, --css <engine>  添加样式表引擎 <engine> 的支持 (less|stylus|compass|sass) （默认是普通的 css 文件）
-        --git           添加 .gitignore
-    -f, --force         强制在非空目录下创建
     
     
 二、Hello world 实例
@@ -56,14 +35,29 @@
     然后在浏览器中打开 http://localhost:3000/ 并查看输出结果。
 
 三、Express 应用生成器
-    通过应用生成器工具 express 可以快速创建一个应用的骨架。
 
-    通过如下命令安装：
+    express-generator 包含了 express 命令行工具。通过如下命令即可安装：
+   $ npm install express-generator -g
+   -h 参数可以列出所有可用的命令行参数：
+   $ express -h
+   Usage: express [options] [dir]
+
+   Options:
+
+    -h, --help          输出使用方法
+        --version       输出版本号
+    -e, --ejs           添加对 ejs 模板引擎的支持
+        --hbs           添加对 handlebars 模板引擎的支持
+        --pug           添加对 pug 模板引擎的支持
+    -H, --hogan         添加对 hogan.js 模板引擎的支持
+        --no-view       创建不带视图引擎的项目
+    -v, --view <engine> 添加对视图引擎（view） <engine> 的支持 (ejs|hbs|hjs|jade|pug|twig|vash) （默认是 jade 模板引擎）
+    -c, --css <engine>  添加样式表引擎 <engine> 的支持 (less|stylus|compass|sass) （默认是普通的 css 文件）
+        --git           添加 .gitignore
+    -f, --force         强制在非空目录下创建
     
-    $ npm install express-generator -g
-    -h 选项可以列出所有可用的命令行选项：
-    $ express -h
-    例如，下面的示例就是在当前工作目录下创建一个命名为 myapp 的应用。
+    
+    
     $ express myapp
     然后安装所有依赖包：
 
@@ -131,6 +125,11 @@
     执行过 var app = express() 后，
     使用app.set 设置express内部的一些参数（options）
     使用app.use 来注册函数，可以简单的认为是向那个（被我叫做）tasks的数组进行push操作
+app.use(customerFunc) 要写在下面两句的前面：
+
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+是因为路由后或请求静态资源后，一次请求响应的生命周期实质上已经结束，加在这后面进行请求处理，没有任何意义。
 
 五、利用 Express 托管静态文件
     通过 Express 内置的 express.static 可以方便地托管静态文件，例如图片、CSS、JavaScript 文件等。
