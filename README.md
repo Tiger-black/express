@@ -10,10 +10,28 @@
     4、接下来安装 Express 并将其保存到依赖列表中：如果只是临时安装 Express，不想将它添加到依赖列表中，只需略去 --save 参数即可
     $ npm install express --save
    
-   # 也可以通过应用生成器工具 express-generator 可以快速创建一个应用的骨架。
+   也可以通过应用生成器工具 express-generator 可以快速创建一个应用的骨架。
    express-generator 包含了 express 命令行工具。通过如下命令即可安装：
    $ npm install express-generator -g
-   
+   -h 参数可以列出所有可用的命令行参数：
+   $ express -h
+   Usage: express [options] [dir]
+
+   Options:
+
+    -h, --help          输出使用方法
+        --version       输出版本号
+    -e, --ejs           添加对 ejs 模板引擎的支持
+        --hbs           添加对 handlebars 模板引擎的支持
+        --pug           添加对 pug 模板引擎的支持
+    -H, --hogan         添加对 hogan.js 模板引擎的支持
+        --no-view       创建不带视图引擎的项目
+    -v, --view <engine> 添加对视图引擎（view） <engine> 的支持 (ejs|hbs|hjs|jade|pug|twig|vash) （默认是 jade 模板引擎）
+    -c, --css <engine>  添加样式表引擎 <engine> 的支持 (less|stylus|compass|sass) （默认是普通的 css 文件）
+        --git           添加 .gitignore
+    -f, --force         强制在非空目录下创建
+    
+    
 二、Hello world 实例
     注意：这里所创建是一个最最简单的 Express 应用，并且仅仅只有一个文件 — 和通过 Express 应用生成器 所创建的应用_完全不一样_，Express 应用生成器所创建的应用框架包含多个 JavaScript 文件、Jade 模板和针对不同用途的子目录。
     进入 myapp 目录，创建一个名为 app.js 的文件，然后将下列代码复制进去：
@@ -109,6 +127,10 @@
         res.send('Got a DELETE request at /user');
     });
     关于路由的详细资料，请参考 路由指南 章节。
+    
+    执行过 var app = express() 后，
+    使用app.set 设置express内部的一些参数（options）
+    使用app.use 来注册函数，可以简单的认为是向那个（被我叫做）tasks的数组进行push操作
 
 五、利用 Express 托管静态文件
     通过 Express 内置的 express.static 可以方便地托管静态文件，例如图片、CSS、JavaScript 文件等。
